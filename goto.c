@@ -5,6 +5,10 @@ int main()
 {
     label:
         printf("we are inside label\n");
+        printf("we are inside label\n");
+        printf("we are inside label\n");
+        printf("we are inside label\n");
+        printf("we are inside label\n");
         goto end;
     printf("Hello World\n");
     goto label;
