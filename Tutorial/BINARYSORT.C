@@ -6,12 +6,10 @@ int binarySearch(int arr[], int l, int h, int t)
     while (l <= h)
     {
         int mid = (h + l) / 2;
-
         if (arr[mid] == t)
         {
             return mid;
         }
-
         if (arr[mid] < t)
         {
             l = mid + 1;
@@ -27,16 +25,15 @@ int binarySearch(int arr[], int l, int h, int t)
 
 int main()
 {
-    
-    int n,t;
+    int n, t;
     printf("Enter the number of terms: ");
     scanf("%d", &n);
     printf("Enter Target value");
     scanf("%d", &t);
     int arr[n];
-    for(int i=0 ;i<n ;i++)
+    for (int i = 0; i < n; i++)
     {
-        scanf("%d",&arr[i]);
+        scanf("%d", &arr[i]);
     }
     /*
     int arr[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
