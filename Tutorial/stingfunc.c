@@ -1,13 +1,9 @@
 #include <stdio.h>
 
-int main()
+void stringOperations(char str[])
 {
-    char str[100];
     int length = 0, charCount = 0, vowelCount = 0;
     char copyStr[100] = {"Sanidhya Awasthi"};
-
-    printf("Enter a string: ");
-    gets(str);
 
     while (str[length] != 0)
     {
@@ -16,6 +12,10 @@ int main()
 
     for (int i = 0; i < length; i++)
     {
+        if (str[i] == ' ')
+        {
+            continue;
+        }
         charCount++;
         if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
             str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
@@ -34,6 +34,16 @@ int main()
     printf("Total number of characters: %d\n", charCount);
     printf("Total number of vowels: %d\n", vowelCount);
     printf("Copied string: %s\n", copyStr);
+}
+
+int main()
+{
+    char str[100];
+
+    printf("Enter a string: ");
+    gets(str);
+
+    stringOperations(str);
 
     return 0;
 }
