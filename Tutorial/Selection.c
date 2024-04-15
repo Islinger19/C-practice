@@ -1,13 +1,12 @@
 #include <stdio.h>
 
-int Selsort(){
-    int min_index,n;
-    int a[5]= {25,32,11,16,13};
+void Selsort(int a[5]){
+    int min_index, n=5;
     int swap;
     for (int i = 0; i < n-1; i++)
     {
         min_index=i;
-        for (int j = 0; j < i+1; j++)
+        for (int j = i+1; j < n; j++) 
         {
             if (a[j]<a[min_index])
             {
@@ -23,12 +22,12 @@ int Selsort(){
                 
     }
     for(int i=0;i<5;i++){
-        printf("%d ",&a[i]);
+        printf("%d ", a[i]); 
     }
-    return 0;
 }
 
 int main(){
-    Selsort();
+    int a[5]= {25,32,11,16,13};
+    Selsort(a); 
     return 0;
 }
