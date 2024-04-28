@@ -28,9 +28,10 @@ int main()
     int n, t;
     printf("Enter the number of terms: ");
     scanf("%d", &n);
-    printf("Enter Target value");
+    printf("Enter Target value :");
     scanf("%d", &t);
     int arr[n];
+    printf("Enter the terms: ");
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
@@ -38,7 +39,6 @@ int main()
     /*
     int arr[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int t = 12;
     */
     int res = binarySearch(arr, 0, n - 1, t);
 
@@ -48,7 +48,7 @@ int main()
     }
     else
     {
-        printf("Element found at index %d\n", res);
+        printf("Element %d found at index %d\n",arr[res], res);
     }
 
     return 0;

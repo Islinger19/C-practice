@@ -21,13 +21,13 @@ void Selsort(int a[5]){
         }
                 
     }
-    for(int i=0;i<5;i++){
-        printf("%d ", a[i]); 
-    }
 }
 
 int main(){
     int a[5]= {25,32,11,16,13};
-    Selsort(a); 
+    Selsort(a);
+    for(int i=0;i<5;i++){
+        printf("%d ", a[i]); 
+    }
     return 0;
 }
