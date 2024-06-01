@@ -1,20 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <stdio.h>
+#include <stdlib.h>
 
-int A = 2;
-int B = 3;
-int Add()
+
+int main() 
 {
-    return A + B;
-}
-int main()
-{
-    int answer;
-    int A = 5;
-    int B = 7;
-    answer = Add();
-    printf("%d\n", answer);
+    printf("Hello world");
     return 0;
 }
