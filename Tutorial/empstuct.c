@@ -36,15 +36,18 @@ void Insert(struct Employee *e){
 }
 void Display(struct Employee e){
     printf("\n\
----------------------------------------------------------------------------------------------------------------------------\n\
-    ID              Name            Designation            Gross           Basic            Allowance           Tax\n\
 ----------------------------------------------------------------------------------------------------------------------------\n\
-    %d       %s        %s           %.2f        %.2f        %.2f        %.2f\n\n",\
+    %d             %s               %s                     %.2f             %.2f             %.2f               %.2f\n",\
 e.id,e.name,e.designation,e.BS.gross,e.BS.basic,e.BS.allowance,e.BS.tax);
 }
 int main() {
-    struct Employee emp;
-    Insert(&emp);
-    Display(emp);
+    struct Employee emp[2];
+    Insert(&emp[1]);
+    Insert(&emp[2]);
+    printf("\n\
+---------------------------------------------------------------------------------------------------------------------------\n\
+    ID              Name            Designation            Gross           Basic            Allowance           Tax\n\ ");
+    Display(emp[1]);
+    Display(emp[2]);
     return 0;
 }

@@ -6,6 +6,7 @@
 
 int main() 
 {
-    printf("Hello world");
-    return 0;
+    int i=1,*a;
+    a=&i;
+    printf("%d",a);
 }
