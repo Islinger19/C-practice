@@ -12,11 +12,11 @@ void stringOperations(char str[])
 
     for (int i = 0; i < length; i++)
     {
-        if (str[i] == ' ')
+        if ('A' <= str[i] && str[i] <= 'Z' || 'a' <= str[i] && str[i] <= 'z')
         {
-            continue;
+            charCount++;
         }
-        charCount++;
+
         if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
             str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
         {

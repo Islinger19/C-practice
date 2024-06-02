@@ -32,7 +32,6 @@ int Concatenate(char s1[50], char s2[50]){
 }
 
 int Substring(char s1[50], char sub[50]){
-    for(int i=0;i<length(s1);i++){
         for(int i=0;i<=length(s1)-length(sub);i++){
             int j;
             for(j=0;j<length(sub);j++){
@@ -43,7 +42,6 @@ int Substring(char s1[50], char sub[50]){
             if(j==length(sub)) return 1;
         }
         return 0;
-    }
 }
 
 int main(){

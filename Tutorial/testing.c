@@ -1,65 +1,21 @@
 #include <stdio.h>
-struct Salary
-{
-    float basic;
-    float gross;
-    float allowance;
-    float tax;
-};
-struct Employee
-{
-    int id;
-    char name[50];
-    char designation[50];
-    char department[50];
-    struct Salary BS;
-};
-void Calculate(struct Employee *e)
-{
-    e->BS.allowance = (0.2) * e->BS.basic;
-    e->BS.tax = (0.1) * e->BS.basic;
-    e->BS.gross = e->BS.basic + e->BS.allowance - e->BS.tax;
-}
-void Insert(struct Employee *e)
-{
-    printf("\nEnter ID: ");
-    scanf("%d", &e->id);
-    getchar();
-    printf("\nEnter Name: ");
-    scanf("%[^\n]s", e->name);
-    getchar();
-    printf("\nEnter Designation: ");
-    scanf("%[^\n]s", e->designation);
-    getchar();
-    printf("\nEnter Department: ");
-    scanf("%[^\n]s", e->department);
-    getchar();
-    printf("\nEnter Basic Salary: ");
-    scanf("%f", &e->BS.basic);
-    Calculate(e);
-}
-void Display(struct Employee *e)
-{
-    printf("\
-----------------------------------------------------------------------------------------------------------------------------\n\
-    %d             %s               %s                     %.2f             %.2f             %.2f               %.2f\n",
-           e->id, e->name, e->designation, e->BS.gross, e->BS.basic, e->BS.allowance, e->BS.tax);
-}
-int main()
-{
-    struct Employee emp[3];
-    for (int i = 0; i < 3; i++)
-    {
-        Insert(&emp[i]);
-    };
 
-    printf("\n\
----------------------------------------------------------------------------------------------------------------------------\n\
-    ID              Name            Designation            Gross           Basic            Allowance           Tax\n");
-    for (int i = 0; i < 3; i++)
-    {
-        Display(&emp[i]);
+void printPattern(int n, int i, int j) {
+    if (i == n + 1)
+        return;
+    if (j == i + 1) {
+        printf("\n");
+        printPattern(n, i + 1, 1);
+    } else {
+        printf("%d ", ((i * (i - 1)) / 2) + j);
+        printPattern(n, i, j + 1);
     }
+}
 
+int main() {
+    int n;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+    printPattern(n, 1, 1);
     return 0;
 }
