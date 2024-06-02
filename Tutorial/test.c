@@ -6,7 +6,10 @@
 
 int main() 
 {
-    int i=1,*a;
-    a=&i;
-    printf("%d",a);
+    char a[5];
+    int b;
+    strcpy(a,"helloooooo bois");
+    b=sizeof(a);
+    printf("%d",b);
+    printf("%s",a);
 }
