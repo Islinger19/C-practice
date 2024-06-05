@@ -3,13 +3,13 @@
 #include <math.h>
 #include <stdlib.h>
 
-
-int main() 
+int main()
 {
-    char a[5];
-    int b;
-    strcpy(a,"helloooooo bois");
-    b=sizeof(a);
-    printf("%d",b);
-    printf("%s",a);
+    int arr[] = {1, 2, 3, 4, 5, 6}, *ptr;
+    ptr = arr;
+    for (int i = 0; i < 6; i++)
+    {
+        printf("%d", *ptr);
+        ptr++;
+    }
 }
