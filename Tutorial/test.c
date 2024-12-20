@@ -1,15 +1,17 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
-
-int main()
+enum week
 {
-    int arr[] = {1, 2, 3, 4, 5, 6}, *ptr;
-    ptr = arr;
-    for (int i = 0; i < 6; i++)
-    {
-        printf("%d", *ptr);
-        ptr++;
-    }
+    Mon,
+    Tue,
+    Wed,
+    Thur,
+    Fri,
+    Sat,
+    Sun
+};
+void main()
+{
+    enum week day;
+    day = Mon;
+    printf("enum data: %d", day);
 }
