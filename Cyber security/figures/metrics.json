@@ -1,0 +1,125 @@
+{
+  "kill_chain_steps": [
+    {
+      "phase": "1. Reconnaissance",
+      "action": "scan",
+      "resource": "asset://webapp-01/network",
+      "sensitivity": "low",
+      "in_task_scope": true
+    },
+    {
+      "phase": "1. Reconnaissance",
+      "action": "scan",
+      "resource": "asset://webapp-01/http",
+      "sensitivity": "low",
+      "in_task_scope": true
+    },
+    {
+      "phase": "2. Vulnerability discovery",
+      "action": "analyze",
+      "resource": "asset://webapp-01/http",
+      "sensitivity": "medium",
+      "in_task_scope": true
+    },
+    {
+      "phase": "2. Vulnerability discovery",
+      "action": "scan",
+      "resource": "asset://db-cluster/pg",
+      "sensitivity": "medium",
+      "in_task_scope": false
+    },
+    {
+      "phase": "3. Credential harvesting",
+      "action": "read",
+      "resource": "asset://ci/service-tokens",
+      "sensitivity": "high",
+      "in_task_scope": false
+    },
+    {
+      "phase": "3. Credential harvesting",
+      "action": "read",
+      "resource": "asset://cloud/imds-metadata",
+      "sensitivity": "high",
+      "in_task_scope": false
+    },
+    {
+      "phase": "4. Lateral movement",
+      "action": "authenticate",
+      "resource": "asset://db-cluster/pg",
+      "sensitivity": "high",
+      "in_task_scope": false
+    },
+    {
+      "phase": "4. Lateral movement",
+      "action": "authenticate",
+      "resource": "asset://registry/containers",
+      "sensitivity": "high",
+      "in_task_scope": false
+    },
+    {
+      "phase": "4. Lateral movement",
+      "action": "authenticate",
+      "resource": "asset://logging/elastic",
+      "sensitivity": "high",
+      "in_task_scope": false
+    },
+    {
+      "phase": "5. Data collection/exfiltration",
+      "action": "export",
+      "resource": "asset://db-cluster/pg",
+      "sensitivity": "critical",
+      "in_task_scope": false
+    },
+    {
+      "phase": "5. Data collection/exfiltration",
+      "action": "export",
+      "resource": "asset://cloud/s3-backups",
+      "sensitivity": "critical",
+      "in_task_scope": false
+    },
+    {
+      "phase": "6. Documentation",
+      "action": "write",
+      "resource": "asset://attacker/report",
+      "sensitivity": "medium",
+      "in_task_scope": false
+    }
+  ],
+  "baseline": {
+    "model": "Baseline (inherited credentials)",
+    "attempted": 12,
+    "authorized": 12,
+    "blocked": 0,
+    "escalated_to_human": 0,
+    "blast_radius_resources": 9,
+    "lateral_movement_succeeded": true,
+    "exfiltration_succeeded": true,
+    "contained_at_phase": "NOT CONTAINED"
+  },
+  "proposed": {
+    "model": "Proposed (NHI + scoped delegation)",
+    "attempted": 12,
+    "authorized": 3,
+    "blocked": 9,
+    "escalated_to_human": 0,
+    "blast_radius_resources": 2,
+    "lateral_movement_succeeded": false,
+    "exfiltration_succeeded": false,
+    "contained_at_phase": "2. Vulnerability discovery"
+  },
+  "proposed_transcript": [
+    "[1. Reconnaissance] ALLOW  scan asset://webapp-01/network",
+    "[1. Reconnaissance] ALLOW  scan asset://webapp-01/http",
+    "[2. Vulnerability discovery] ALLOW  analyze asset://webapp-01/http",
+    "[2. Vulnerability discovery] DENY              scan asset://db-cluster/pg  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[3. Credential harvesting] DENY              read asset://ci/service-tokens  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[3. Credential harvesting] DENY              read asset://cloud/imds-metadata  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[4. Lateral movement] DENY              authenticate asset://db-cluster/pg  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[4. Lateral movement] DENY              authenticate asset://registry/containers  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[4. Lateral movement] DENY              authenticate asset://logging/elastic  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[5. Data collection/exfiltration] DENY              export asset://db-cluster/pg  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[5. Data collection/exfiltration] DENY              export asset://cloud/s3-backups  <- caveat not satisfied: [resource prefix asset://webapp-01/]",
+    "[6. Documentation] DENY              write asset://attacker/report  <- caveat not satisfied: [resource prefix asset://webapp-01/]"
+  ],
+  "human_prompts_in_proposed": 0
+}
